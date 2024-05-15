@@ -6,6 +6,7 @@ import {
   OnInit,
   ViewChild,
   inject,
+  signal,
 } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -15,11 +16,18 @@ import { tap } from 'rxjs';
 import { ICompanyDetail } from '../../models/company-detail.model';
 import { SearchService } from '../../services/search.service';
 import { SharedDataService } from '../../services/shared-data.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-search-results',
   standalone: true,
-  imports: [MatPaginatorModule, MatTableModule, MatCardModule, DatePipe],
+  imports: [
+    MatPaginatorModule,
+    MatTableModule,
+    MatCardModule,
+    DatePipe,
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './search-results.component.html',
   styleUrl: './search-results.component.scss',
 })
@@ -33,6 +41,7 @@ export class SearchResultsComponent implements OnInit, AfterViewInit {
 
   public displayedColumns: string[] = ['na'];
   public dataSource = new MatTableDataSource<ICompanyDetail>();
+  public loader = false;
 
   @ViewChild(MatPaginator) public paginator!: MatPaginator;
 
@@ -51,14 +60,13 @@ export class SearchResultsComponent implements OnInit, AfterViewInit {
   }
 
   private getSearchResults() {
+    this.loader = true;
+
     this.searchService
       .getSearchResults(this.searchTerm.trim())
-      .pipe(
-        tap((res) => {
-          console.log('xxxx', res);
-          this.dataSource.data = res.items;
-        })
-      )
-      .subscribe((res) => (this.dataSource.data = res.items));
+      .subscribe((res) => {
+        this.loader = false;
+        this.dataSource.data = res.items;
+      });
   }
 }
