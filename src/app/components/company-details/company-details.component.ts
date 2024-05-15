@@ -3,11 +3,12 @@ import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { SharedDataService } from '../../services/shared-data.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-company-details',
   standalone: true,
-  imports: [MatCardModule, DatePipe, TitleCasePipe],
+  imports: [MatCardModule, DatePipe, TitleCasePipe, MatIconModule],
   templateUrl: './company-details.component.html',
   styleUrl: './company-details.component.scss',
 })
@@ -25,16 +26,9 @@ export class CompanyDetailsComponent {
     ]);
   }
 
-  // export interface ICompanyDetail {
-  //   company_status: string;
-  //   address_snippet: string;
-  //   date_of_creation: string;
-  //   matches: IMatches;
-  //   description: string;
-  //   links: ILinks;
-  //   company_number: string;
-  //   title: string;
-  //   company_type: string;
-  //   address: IAddress;
-  // }
+  public onBack() {
+    this.router.navigate(['/search-results'], {
+      queryParams: { query: this.sharedDataService.searchTerm() },
+    });
+  }
 }

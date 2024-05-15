@@ -5,6 +5,7 @@ import { ICompanyDetail } from '../models/company-detail.model';
   providedIn: 'root',
 })
 export class SharedDataService {
+  // Company details
   private companyDetails = signal<ICompanyDetail>({} as ICompanyDetail);
 
   public updateCompanyDetails(companyDetails: ICompanyDetail) {
@@ -14,4 +15,10 @@ export class SharedDataService {
   public getCompanyDetails() {
     return this.companyDetails();
   }
+
+  // Authentication
+  public userAuthentication = signal<boolean>(true);
+
+  // Search term
+  public searchTerm = signal<string>('');
 }

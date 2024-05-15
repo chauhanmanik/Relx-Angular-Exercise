@@ -6,17 +6,15 @@ import {
   OnInit,
   ViewChild,
   inject,
-  signal,
 } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
 import { ICompanyDetail } from '../../models/company-detail.model';
 import { SearchService } from '../../services/search.service';
 import { SharedDataService } from '../../services/shared-data.service';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-search-results',
@@ -35,6 +33,7 @@ export class SearchResultsComponent implements OnInit, AfterViewInit {
   private searchService = inject(SearchService);
   private sharedDataService = inject(SharedDataService);
   private router = inject(Router);
+  private shareDataService = inject(SharedDataService);
 
   // A new feature of angular 17 to get query param from the router
   @Input('query') searchTerm!: string;
@@ -46,6 +45,7 @@ export class SearchResultsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) public paginator!: MatPaginator;
 
   ngOnInit(): void {
+    this.shareDataService.searchTerm.set(this.searchTerm);
     this.getSearchResults();
   }
 

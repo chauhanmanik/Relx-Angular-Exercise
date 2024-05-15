@@ -22,10 +22,15 @@
           <div class="sub-header">Incorporated on</div>
           <div class="content">{{companyDetails.date_of_creation | date:'MMMM dd yyyy'}}</div>
         </div>
-        <div class="link-text" (click)="onListOfficers()">
-          List officers
-        </div>
       </div>
     </mat-card-content>
+    <mat-card-footer>
+      <div class="link-text" (click)="onListOfficers()">
+        List officers
+      </div>
+      <div>
+        <mat-icon class="back" (click)="onBack()" aria-hidden="false" fontIcon="arrow_back"></mat-icon>
+      </div>
+    </mat-card-footer>
   </mat-card>
 </div>

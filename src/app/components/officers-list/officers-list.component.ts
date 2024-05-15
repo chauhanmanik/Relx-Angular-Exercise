@@ -1,15 +1,15 @@
+import { TitleCasePipe } from '@angular/common';
 import { Component, Input, inject, signal } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { SearchService } from '../../services/search.service';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { IOfficer } from '../../models/officer.model';
-import { ICompanyDetail } from '../../models/company-detail.model';
+import { SearchService } from '../../services/search.service';
 import { SharedDataService } from '../../services/shared-data.service';
-import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-officers-list',
   standalone: true,
-  imports: [MatCardModule, TitleCasePipe],
+  imports: [MatCardModule, TitleCasePipe, MatProgressSpinnerModule],
   templateUrl: './officers-list.component.html',
   styleUrl: './officers-list.component.scss',
 })
@@ -21,17 +21,17 @@ export class OfficersListComponent {
 
   public officerList = signal<IOfficer[]>({} as IOfficer[]);
   public companyDetails = this.sharedDataService.getCompanyDetails();
+  public loader = false;
 
   ngOnInit(): void {
     this.getOfficers();
   }
 
   private getOfficers() {
+    this.loader = true;
     this.searchService.getOfficers(this.companyId.trim()).subscribe((res) => {
-      console.log('xxx Officrs', res);
       this.officerList.set(res.items);
-      // this.loader = false;
-      // this.dataSource.data = res.items;
+      this.loader = false;
     });
   }
 }

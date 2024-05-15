@@ -24,9 +24,4 @@ export class SearchComponent {
       });
     }
   }
-
-  // isValidSearchTerm(): boolean {
-  //   // Validation
-  //   // return this.searchTerm.trim().length > 0;
-  // }
 }

@@ -1,6 +1,8 @@
 <div class="container">
   <mat-card>
     <mat-card-content>
+      @if(!loader)
+      {
       <div class="card-content">
         <div>
           <div class="header">{{companyDetails.title}}</div>
@@ -12,8 +14,14 @@
           <div class="content">{{item.officer_role | titlecase}}</div>
         </div>
         }
-
       </div>
+      }
+      @else {
+      <div class="loader">
+        <mat-progress-spinner color="accent" mode="indeterminate" diameter="50">
+        </mat-progress-spinner>
+      </div>
+      }
     </mat-card-content>
   </mat-card>
 </div>
