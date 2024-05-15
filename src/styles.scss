@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: rgba(139, 139, 139, 0.6);
+  color: rgba(22, 22, 22, 0.8);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:disabled {
+    background-color: rgba(139, 139, 139, 0.3);
+    color: rgba(22, 22, 22, 0.5);
+    cursor: default;
+  }
+}
+
+
+
+.alert {
+  color: rgb(155, 0, 0);
+}
