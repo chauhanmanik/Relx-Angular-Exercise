@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="search-term alert">
+    <input class="form-control" placeholder="Company name or number" id="name" type="text"
+      [formControl]="searchTermControl">
+    @if (searchTermControl.invalid && searchTermControl.touched) {
+    <div>Search term is required</div>
+    }
+  </div>
+  <button mat-flat-button [disabled]="searchTermControl.invalid" (click)="onSearch()">Search</button>
+</div>

@@ -1,0 +1,7 @@
+<mat-toolbar class="mat-elevation-z3">
+  <div class="header-container">
+    <mat-icon class="home" (click)="onHome()" aria-hidden="false" aria-label="Example home icon"
+      fontIcon="home"></mat-icon>
+    <mat-slide-toggle (change)="onAuthentication()" [checked]="userAuthenticated()">{{toggledText()}}</mat-slide-toggle>
+  </div>
+</mat-toolbar>

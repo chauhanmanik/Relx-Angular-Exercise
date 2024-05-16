@@ -1,0 +1,29 @@
+$base-color: rgb(29, 29, 29);
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 300px) !important;
+
+  ::placeholder {
+    color: rgba($base-color, 0.5);
+  }
+
+  input {
+    width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid rgba($base-color, 0.6);
+    border-radius: 4px;
+    color: rgba($base-color, 0.5);
+  }
+
+  .search-term {
+    display: flex;
+    flex-direction: column;
+  }
+}

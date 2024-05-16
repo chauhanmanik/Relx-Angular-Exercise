@@ -1,0 +1,36 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content>
+      <div class="card-content">
+        <div>
+          <div class="header">{{companyDetails.title}}</div>
+          <div class="sub-header">Company number: <span class="content">{{companyDetails.company_number}}</span></div>
+        </div>
+        <div>
+          <div class="sub-header">Registered office address</div>
+          <div class="content">{{companyDetails.address_snippet| titlecase}}</div>
+        </div>
+        <div>
+          <div class="sub-header">Company status</div>
+          <div class="content">{{companyDetails.company_status|titlecase}}</div>
+        </div>
+        <div>
+          <div class="sub-header">Company Type</div>
+          <div class="content">{{companyDetails.company_type | titlecase}}</div>
+        </div>
+        <div>
+          <div class="sub-header">Incorporated on</div>
+          <div class="content">{{companyDetails.date_of_creation | date:'MMMM dd yyyy'}}</div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer>
+      <div class="link-text" (click)="onListOfficers()">
+        List officers
+      </div>
+      <div>
+        <mat-icon class="back" (click)="onBack()" aria-hidden="false" fontIcon="arrow_back"></mat-icon>
+      </div>
+    </mat-card-footer>
+  </mat-card>
+</div>

@@ -1,0 +1,44 @@
+.mat-mdc-table {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+.mat-mdc-row {
+  color: black;
+}
+
+.mat-mdc-paginator {
+  background-color: rgb(58, 58, 58);
+}
+
+.mat-mdc-card {
+  background-color: rgb(255, 255, 255);
+}
+
+.company-details {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .name {
+    font-size: 16px;
+    font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .number {
+    font-weight: 500;
+  }
+
+  .address {
+    font-size: 10px;
+  }
+}
+
+.table {
+  min-height: 100px;
+}

@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0 20px 0;
+  color: rgba(0, 0, 0, 0.5);
+
+  .container-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+    width: 400px;
+
+    .sub-container-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      hr {
+        width: 100%;
+        margin: 0px;
+      }
+
+      .title {
+        font-weight: 500;
+      }
+
+      .sub-title {
+        font-size: 10px;
+      }
+    }
+
+    .goal {
+      border-radius: 4px;
+      background: rgba($color: rgb(46, 52, 59), $alpha: 1.0);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 10px;
+    }
+  }
+}
