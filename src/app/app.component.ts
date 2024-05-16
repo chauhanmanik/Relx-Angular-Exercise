@@ -3,6 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { CaptionComponent } from './components/caption/caption.component';
 
+// Upload
+
 @Component({
   selector: 'app-root',
   standalone: true,
