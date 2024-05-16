@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import {
   AfterViewInit,
   Component,
+  DestroyRef,
   Input,
   OnInit,
   ViewChild,
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
 import { ICompanyDetail } from '../../models/company-detail.model';
 import { SearchService } from '../../services/search.service';
 import { SharedDataService } from '../../services/shared-data.service';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-search-results',
@@ -44,6 +46,8 @@ export class SearchResultsComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatPaginator) public paginator!: MatPaginator;
 
+  private destroyRef = inject(DestroyRef);
+
   ngOnInit(): void {
     this.shareDataService.searchTerm.set(this.searchTerm);
     this.getSearchResults();
@@ -64,6 +68,7 @@ export class SearchResultsComponent implements OnInit, AfterViewInit {
 
     this.searchService
       .getSearchResults(this.searchTerm.trim())
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((res) => {
         this.loader = false;
         this.dataSource.data = res.items;
